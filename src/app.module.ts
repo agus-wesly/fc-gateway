@@ -3,9 +3,6 @@ import { ProductModule } from './modules/product/product.module';
 import { OrderModule } from './modules/order/order.module';
 
 @Module({
-    imports: [
-        ProductModule,
-        OrderModule
-    ],
+  imports: [ProductModule, OrderModule],
 })
-export class AppModule { }
+export class AppModule {}
