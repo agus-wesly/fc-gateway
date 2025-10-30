@@ -4,7 +4,7 @@ import { HttpException, Injectable } from '@nestjs/common';
 export class ProductService {
   async getById(id: string) {
     const response = await fetch(
-      `${process.env.PRODUCT_SERVICE_BASE_URL}/products/${id}`,
+      `${process.env.PRODUCT_SERVICE_URL}/products/${id}`,
     );
     const data = await response.json();
     if (!response.ok) {
@@ -15,7 +15,7 @@ export class ProductService {
 
   async create(payload: unknown) {
     const response = await fetch(
-      `${process.env.PRODUCT_SERVICE_BASE_URL}/products`,
+      `${process.env.PRODUCT_SERVICE_URL}/products`,
       {
         method: 'POST',
         body: JSON.stringify(payload),
