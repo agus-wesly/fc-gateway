@@ -1,9 +1,9 @@
 import { HttpException, Injectable } from '@nestjs/common';
 
 @Injectable()
-export class ProductService {
-    async getById(id: string) {
-        const response = await fetch(`${process.env.PRODUCT_SERVICE_BASE_URL}/products/${id}`)
+export class OrderService {
+    async getByProductId(productId: string) {
+        const response = await fetch(`${process.env.ORDER_SERVICE_BASE_URL}/orders/product/${productId}`)
         const data = await response.json()
         if (!response.ok) {
             throw new HttpException(data, response.status);
@@ -12,7 +12,7 @@ export class ProductService {
     }
 
     async create(payload: unknown) {
-        const response = await fetch(`${process.env.PRODUCT_SERVICE_BASE_URL}/products`, {
+        const response = await fetch(`${process.env.ORDER_SERVICE_BASE_URL}/orders`, {
             method: "POST",
             body: JSON.stringify(payload),
             headers: {
